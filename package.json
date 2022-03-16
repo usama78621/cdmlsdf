@@ -2,7 +2,7 @@
   "name": "notes-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://usama78621.github.io/Notes-app-with-React-js-and-TypeScript",
+  "homepage": "https://usama78621.github.io/notes",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",

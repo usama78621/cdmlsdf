@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./component/stylesh/style.css";
+import "./component/style/style.css";
 import { Note } from "./component";
 import { Noteslist } from "./component/noteslist/Noteslist";
-import Button from "./component/Button/Button";
+import Button from "./component/button/Button";
 
+// Main Function
 function App() {
+  //  getFromLocalStorge
   const addToLocalStroge = () => {
     const notes = localStorage.getItem("notes");
     if (notes) {
@@ -13,25 +15,28 @@ function App() {
       return [];
     }
   };
+  // useState us
   const [inputnotes, setinputNotes] = useState<string>("");
   const [notes, setNotes] = useState<Note[]>(addToLocalStroge());
   const [edit, setEdit] = useState<boolean>(false);
   const [selectedNoteId, setSelectedNoteId] = useState<string>("");
 
+  // Add Notes Function
   const handeladd = (e: React.FormEvent) => {
     e.preventDefault();
     const noteObj: Note = {
       note: inputnotes,
       id: Math.random() + inputnotes,
     };
+    // condition for notes if add display this otherwise some alert
     if (inputnotes) {
       setNotes([...notes, noteObj]);
       setinputNotes("");
     } else {
-      alert("add valued value");
+      alert("Please add Some Value");
     }
   };
-
+  // When the user click on edit Button for update Notes
   const handleUpdateNote: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     const updatedArr = notes.map((note) => {
@@ -44,11 +49,12 @@ function App() {
     setinputNotes("");
     setEdit(false);
   };
-
+  // use useEffect for SetToLocalSstoge
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
+  // add the edit function
   const handleEdit = (id: string) => {
     setEdit(true);
     for (let index = 0; index < notes.length; index++) {
@@ -60,7 +66,6 @@ function App() {
       }
     }
   };
-
   return (
     <div>
       <form className="input" onSubmit={edit ? handleUpdateNote : handeladd}>

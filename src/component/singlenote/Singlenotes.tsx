@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { AiOutlineEdit, AiOutlineCheck } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
-import "../stylesh/style.css";
 import { Note } from "../index";
+import "../style/style.css";
 interface SinglenotesProps {
   note: Note;
   setNotes: React.Dispatch<React.SetStateAction<Note[]>>;

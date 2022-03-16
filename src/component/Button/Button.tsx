@@ -1,5 +1,4 @@
 import { FC, MouseEventHandler } from "react";
-
 interface CustomeButtonProps {
   text: string;
   type?: "button" | "submit" | "reset" | undefined;
